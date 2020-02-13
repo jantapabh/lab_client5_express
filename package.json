@@ -1,0 +1,23 @@
+{
+  "name": "expresss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jantapabh/lab_client5_express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jantapabh/lab_client5_express/issues"
+  },
+  "homepage": "https://github.com/jantapabh/lab_client5_express#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
