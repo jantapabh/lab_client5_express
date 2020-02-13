@@ -1,3 +1,6 @@
+let _ = require('lodash')
+
+
 let customer = [
 
 
@@ -10,10 +13,14 @@ let customer = [
 ]
 
 
-console.log(customer);
+// console.log(customer);
 
-customer.map((item) =>
-    console.log(item.name + '-' + item.salary
-    ))
+// customer.map((item) =>
 
-    customer.sort( (a,b) => (b.salary > a.salary) ? -1 : 1 )
+//     console.log(item.name + '-' + item.salary
+    
+//     ))
+
+    // customer.sort( (a,b) => (b.salary > a.salary) ? -1 : 1 )
+
+       console.log( _.sortBy( customer, 'salary'))
