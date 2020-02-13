@@ -6,6 +6,13 @@ let express = require('express'),
 
 
     app = express()
+
+
+    app.use(express.static('./public'))
+
+
+
+
 app.use((req, res, next) => {
 
     console.log('app.use()')
@@ -22,7 +29,7 @@ app.use('/use', (req, res, next) => {
 
 app.get('/', (req, res) => {
 
-    res.send('Hello World')
+    res.send('Hello World' + req.method)
 
 
 
