@@ -6,43 +6,67 @@ let express = require('express'),
 
 
     app = express()
-    bodyPaser = require('body-parser')
-    cookieParser = require('cookie-parser')
+bodyPaser = require('body-parser')
+cookieParser = require('cookie-parser')
+session = require('express-session')
 
 
 
-    app.use(express.static('./public'))
-    app.use( cookieParser('foobar'))
+app.use(express.static('./public'))
+app.use(cookieParser('foobar'))
+app.use(session({
+    secret: 'Jan',
+    cookie: { maxAge: 60000 },
+    resave: false,
+    saveUninitialized: false
+}))
 
 
-    let urlencodedParser = bodyPaser.urlencoded({ extended: false });
 
+let urlencodedParser = bodyPaser.urlencoded({ extended: false });
 
-    app.get('/getCook', (req, res) => {
+let sess;
 
-        // console.log( req.query.foo);
+app.use((req, res, next) => {
 
-        res.send(' ' + req.cookies.name + ' ' + req.cookies.Surname + ' ' + req.query.foo + ' ' + req.params.name)
-    })
+     sess = req.session
+    sess = (sess.views) ? ++sess.views : 1
+    console.log(sess.views)
+    next()
 
-    app.get('/setCook', (req, res) => {
+})
 
-        res.cookie('name', 'John')
-        res.cookie('Surname', 'Bin')
-        res.send('Set Cookie done! ')
+app.get('/getViews', (req, res) => {
 
-    })
+    res.send('This page is Loaded :  ' + req.session.views)
 
-    app.post('/add', urlencodedParser, (req, res) => {
+})
 
-        // console.log('a: ',req.body.a)
-        // console.log('a: ',req.body.b)
+app.get('/getCook', (req, res) => {
 
-        let result = parseInt(req.body.a) + parseInt(req.body.b)
+    // console.log( req.query.foo);
 
-        res.send('Result : ' + result)
+    res.send(' ' + req.cookies.name + ' ' + req.cookies.Surname + ' ' + req.query.foo + ' ' + req.params.name)
+})
 
-    }) 
+app.get('/setCook', (req, res) => {
+
+    res.cookie('name', 'John')
+    res.cookie('Surname', 'Bin')
+    res.send('Set Cookie done! ')
+
+})
+
+app.post('/add', urlencodedParser, (req, res) => {
+
+    // console.log('a: ',req.body.a)
+    // console.log('a: ',req.body.b)
+
+    let result = parseInt(req.body.a) + parseInt(req.body.b)
+
+    res.send('Result : ' + result)
+
+})
 
 app.listen(80, () => {
 
