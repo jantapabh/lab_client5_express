@@ -20,7 +20,7 @@ let express = require('express'),
 
     app.get('/getCook', (req, res) => {
 
-        res.send('' + res.cookies)
+        res.send(' ' + req.cookies.name + ' ' + req.cookies.surname)
     })
 
     app.get('/setCook', (req, res) => {
