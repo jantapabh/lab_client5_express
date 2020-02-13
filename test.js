@@ -6,43 +6,16 @@ let express = require('express'),
 
 
     app = express()
-
-
+    bodyPaser = require('body-parser')
     app.use(express.static('./public'))
+    let urlencodedParser = bodyPaser.urlencoded({ extended: false });
 
+    app.post('/add', urlencodedParser, (req, res) => {
 
+        console.log('a: ',req.body.a)
+        console.log('a: ',req.body.b)
 
-
-app.use((req, res, next) => {
-
-    console.log('app.use()')
-    next()
-
-})
-
-app.use('/use', (req, res, next) => {
-
-    console.log('app.use()')
-
-    next()
-})
-
-app.get('/', (req, res) => {
-
-    res.send('Hello World' + req.method)
-
-
-
-})
-
-app.get('/foo', (req, res) => {
-
-    res.send('Foo Hello')
-
-
-})
-
-
+    }) 
 
 app.listen(80, () => {
 
