@@ -23,4 +23,6 @@ let customer = [
 
     // customer.sort( (a,b) => (b.salary > a.salary) ? -1 : 1 )
 
-       console.log( _.sortBy( customer, 'salary'))
+       console.log( _.sortBy( customer, 'salary').reverse())
+
+       console.log(_.slice( customer,1,2))
