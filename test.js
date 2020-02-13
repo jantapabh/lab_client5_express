@@ -6,7 +6,9 @@ let express = require('express'),
 
 
     app = express()
+    app.use( () => console.log('app.use()'))
 
+    app.use('/use', () => console.log('Use'))
 
     app.get('/', (req, res) => {
 
@@ -21,6 +23,8 @@ let express = require('express'),
 
 
     })
+
+
 
     app.listen(80, () => {
 
