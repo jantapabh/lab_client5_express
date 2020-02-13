@@ -7,8 +7,29 @@ let express = require('express'),
 
     app = express()
     bodyPaser = require('body-parser')
+    cookieParser = require('cookie-parser')
+
+
+
     app.use(express.static('./public'))
+    app.use( cookieParser('foobar'))
+
+
     let urlencodedParser = bodyPaser.urlencoded({ extended: false });
+
+
+    app.get('/getCook', (req, res) => {
+
+        res.send('' + res.cookies)
+    })
+
+    app.get('/setCook', (req, res) => {
+
+        res.cookie('name', 'John')
+        res.cookie('Surname', 'Bin')
+        res.send('Set Cookie done! ')
+
+    })
 
     app.post('/add', urlencodedParser, (req, res) => {
 
