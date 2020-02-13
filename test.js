@@ -1,12 +1,24 @@
-var http = require('http');
+// 
 
-var server = http.createServer(function(req, res){
+const PORT = 80;
+let express = require('express'),
 
-    
-   res.writeHead(200, {'Content-type': 'text/plain'});
-   res.end('Hello world\n');
 
-});
 
-server.listen(8000);
-console.log('Server is ready!');
+    app = express()
+
+
+    app.get('/', (req, res) => {
+
+        res.send('Hello World')
+
+
+    })
+
+    app.listen(80, () => {
+
+       console.log('Server is runnig at: ', PORT)
+
+
+    }
+     )
