@@ -12,8 +12,12 @@ let express = require('express'),
 
     app.post('/add', urlencodedParser, (req, res) => {
 
-        console.log('a: ',req.body.a)
-        console.log('a: ',req.body.b)
+        // console.log('a: ',req.body.a)
+        // console.log('a: ',req.body.b)
+
+        let result = res.send(parseInt(req.body.a) + parseInt(req.body.b))
+
+        res.send('Result : '+result)
 
     }) 
 
