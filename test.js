@@ -6,33 +6,43 @@ let express = require('express'),
 
 
     app = express()
-    app.use( () => console.log('app.use()'))
+app.use((req, res, next) => {
 
-    app.use('/use', () => console.log('Use'))
+    console.log('app.use()')
+    next()
 
-    app.get('/', (req, res) => {
+})
 
-        res.send('Hello World')
+app.use('/use', (req, res, next) => {
 
+    console.log('app.use()')
 
-    })
+    next()
+})
 
-    app.get('/foo', (req, res) => {
+app.get('/', (req, res) => {
 
-        res.send('Foo Hello')
-
-
-    })
-
-
-
-    app.listen(80, () => {
-
-       console.log('Server is runnig at: ', PORT)
+    res.send('Hello World')
 
 
-    }
-     )
+
+})
+
+app.get('/foo', (req, res) => {
+
+    res.send('Foo Hello')
 
 
-     
+})
+
+
+
+app.listen(80, () => {
+
+    console.log('Server is runnig at: ', PORT)
+
+
+}
+)
+
+
