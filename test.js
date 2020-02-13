@@ -15,9 +15,9 @@ let express = require('express'),
         // console.log('a: ',req.body.a)
         // console.log('a: ',req.body.b)
 
-        let result = res.send(parseInt(req.body.a) + parseInt(req.body.b))
+        let result = parseInt(req.body.a) + parseInt(req.body.b)
 
-        res.send('Result : '+result)
+        res.send('Result : ' + result)
 
     }) 
 
